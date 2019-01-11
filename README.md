@@ -64,7 +64,11 @@ Create a merge request for the current branch. The target branch will be your pr
 
 _Alias: co_
 
-List available Merge Requests and branches. Select one of them to switch to the corresponding branch. This will also try to update the branch to the newest commit.
+List available Merge Requests and branches. Select one of them to switch to the corresponding branch. This will also try to update the branch to the latest commit.
+
+#### `ping`
+
+Ping Gitlab API.
 
 ## Configuration
 
