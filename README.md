@@ -79,3 +79,20 @@ In order to get information about your project from Gitlab, `laborious` uses the
 Some commands, like creating a Merge Request, require authentication. `laborious` will ask you for a [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) if this is the case.
 
 You can also add the token manually, by creating a `.laborious` in your home directy.
+
+## Integration with `yargs`
+
+Since `laborious` is using [`yargs`](https://github.com/yargs/yargs) as CLI framework, you can require commands directly if you're already have your own CLI build with `yargs`.
+To integrate `laborious`' commands in your CLI you can do the following:
+
+```js
+#!/usr/bin/env node
+import { getCommandsDir } from 'laborious`;
+import yargs from 'yargs';
+
+const argv = yargs
+  .commandDir('./my-commands')
+  .commandDir(getCommandsDir())
+  .alias('help', 'h')
+  .argv;
+```
