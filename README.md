@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://www.emojione.com/emoji/2697">
-    <img height="100" width="100" alt="alembic" src="https://raw.githubusercontent.com/reservix/laborious/master/assets/alembic.png" />
+    <img height="120" width="120" alt="alembic" src="https://raw.githubusercontent.com/reservix/laborious/master/assets/alembic.png" />
   </a>
 </div>
 
@@ -12,6 +12,8 @@
 
 ## Install
 
+_Requires git 2.7+ and node 8+ to be installed._
+
 ```
 $ yarn add -D laborious
 ```
@@ -21,8 +23,6 @@ or
 ```
 $ npm install -D laborious
 ```
-
-_Requires git 2.7+ and node 8+ to be installed._
 
 ## Usage
 
