@@ -6,6 +6,8 @@
 
 # laborious
 
+![https://www.npmjs.com/package/laborious](https://img.shields.io/npm/v/laborious.svg?style=flat-square) ![https://github.com/Reservix/laborious/blob/master/LICENCE](https://img.shields.io/npm/l/laborious.svg?style=flat-square)
+
 > CLI tools for the lazy Gitlab developer.
 
 `laborious` is a CLI app to execute common tasks (create Merge Request, checkout Merge Request for review, ...) without the need to access Gitlab's web view.
