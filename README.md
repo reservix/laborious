@@ -1,0 +1,77 @@
+<div align="center">
+  <a href="https://www.emojione.com/emoji/2697">
+    <img height="100" width="100" alt="alembic" src="https://raw.githubusercontent.com/reservix/laborious/master/assets/alembic.png" />
+  </a>
+</div>
+
+# laborious
+
+> CLI tools for the lazy Gitlab developer.
+
+`laborious` is a CLI app to execute common tasks (create Merge Request, checkout Merge Request for review, ...) without the need to access Gitlab's web view.
+
+## Install
+
+```
+$ yarn add -D laborious
+```
+
+or
+
+```
+$ npm install -D laborious
+```
+
+_Requires git 2.7+ and node 8+ to be installed._
+
+## Usage
+
+It is recommended to add `laborious` to your `package.json`'s scripts. This way you have easy access to all commands via `yarn`/`npm`.
+
+For example, if you add the following to your scripts, you can do `yarn lab <command>` or `npm run lab <command>` to run `laborious`.
+
+```json
+{
+  "scripts": {
+    "lab": "laborious"
+  }
+}
+```
+
+### Available Commands
+
+Note, you can run `laborious` without any commands to view the help and get an overview of all available commands.
+
+#### `init`
+
+_Alias: i_
+
+Create a `laborious.json` configuration file. You'll get ask some questions and the file will be created for you afterwards.
+
+#### `open`
+
+_Alias: o_
+
+Uses your default browser to open the homepage of your project in Gitlab.
+
+#### `merge-request`
+
+_Alias: mr_
+
+Create a merge request for the current branch. The target branch will be your project's default branch (can be configured within Gitlab).
+
+#### `checkout`
+
+_Alias: co_
+
+List available Merge Requests and branches. Select one of them to switch to the corresponding branch. This will also try to update the branch to the newest commit.
+
+## Configuration
+
+In order to get information about your project from Gitlab, `laborious` uses the configured git origin to infer the location of the Gitlab API. Make sure your project is hosted on (self-hosted) Gitlab! If you want to test, if `laborious` can reach your Gitlab, use the `ping` command.
+
+### Authentication
+
+Some commands, like creating a Merge Request, require authentication. `laborious` will ask you for a [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) if this is the case.
+
+You can also add the token manually, by creating a `.laborious` in your home directy.

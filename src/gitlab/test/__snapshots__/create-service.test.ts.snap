@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create a merge request: toMatchLastCallSnapshot 1`] = `
+Array [
+  "https://gitlab.example.com/api/v4/projects/12346/merge_requests",
+  Object {
+    "body": Object {
+      "id": 12346,
+      "source_branch": "feature/123",
+      "target_branch": "master",
+      "title": "this is a merge request",
+    },
+    "headers": Object {
+      "accept": "application/json",
+      "private-token": "T0kn",
+      "user-agent": "Testing laborious",
+    },
+    "json": true,
+  },
+]
+`;
+
+exports[`get a project: toMatchLastCallSnapshot 1`] = `
+Array [
+  "https://gitlab.example.com/api/v4/projects/ids%20can%20also%20be%20strings",
+  Object {
+    "body": undefined,
+    "headers": Object {
+      "accept": "application/json",
+      "private-token": "T0kn",
+      "user-agent": "Testing laborious",
+    },
+    "json": true,
+  },
+]
+`;
+
+exports[`get list of branches: toMatchLastCallSnapshot 1`] = `
+Array [
+  "https://gitlab.example.com/api/v4/projects/blubb/merge_requests",
+  Object {
+    "body": undefined,
+    "headers": Object {
+      "accept": "application/json",
+      "private-token": "T0kn",
+      "user-agent": "Testing laborious",
+    },
+    "json": true,
+  },
+]
+`;
+
+exports[`get list of merge requests: toMatchLastCallSnapshot 1`] = `
+Array [
+  "https://gitlab.example.com/api/v4/projects/id%20id%20id/merge_requests",
+  Object {
+    "body": undefined,
+    "headers": Object {
+      "accept": "application/json",
+      "private-token": "T0kn",
+      "user-agent": "Testing laborious",
+    },
+    "json": true,
+  },
+]
+`;
+
+exports[`get version: toMatchLastCallSnapshot 1`] = `
+Array [
+  "https://gitlab.example.com/api/v4/version",
+  Object {
+    "body": undefined,
+    "headers": Object {
+      "accept": "application/json",
+      "private-token": "T0kn",
+      "user-agent": "Testing laborious",
+    },
+    "json": true,
+  },
+]
+`;
