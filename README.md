@@ -86,13 +86,11 @@ Since `laborious` is using [`yargs`](https://github.com/yargs/yargs) as CLI fram
 To integrate `laborious`' commands in your CLI you can do the following:
 
 ```js
-#!/usr/bin/env node
-import { getCommandsDir } from 'laborious`;
+import { getCommandsDir } from 'laborious';
 import yargs from 'yargs';
 
 const argv = yargs
   .commandDir('./my-commands')
   .commandDir(getCommandsDir())
-  .alias('help', 'h')
-  .argv;
+  .alias('help', 'h').argv;
 ```
