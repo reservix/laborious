@@ -1,5 +1,108 @@
 import Enquirer from 'enquirer';
 
+// Hopefully we can remove this when enquirer hast better typings
+// tslint:disable-next-line:no-shadowed-variable
+export interface BasePromptOptions {
+  name: string | (() => string);
+  type: string | (() => string);
+  message: string | (() => string) | (() => Promise<string>);
+  initial?: any;
+  required?: boolean;
+  format?(value: string): string | Promise<string>;
+  result?(value: string): string | Promise<string>;
+  skip?: ((state: object) => boolean | Promise<boolean>) | boolean;
+  validate?(
+    value: string
+  ): boolean | Promise<boolean> | string | Promise<string>;
+  onSubmit?(
+    name: string,
+    value: any,
+    prompt: Enquirer.Prompt
+  ): boolean | Promise<boolean>;
+  onCancel?(
+    name: string,
+    value: any,
+    prompt: Enquirer.Prompt
+  ): boolean | Promise<boolean>;
+  stdin?: NodeJS.ReadStream;
+  stdout?: NodeJS.WriteStream;
+}
+
+export interface Choice {
+  name: string;
+  message?: string;
+  value?: string;
+  hint?: string;
+  disabled?: boolean | string;
+}
+
+export interface ArrayPromptOptions extends BasePromptOptions {
+  type:
+    | 'autocomplete'
+    | 'editable'
+    | 'form'
+    | 'multiselect'
+    | 'select'
+    | 'survey'
+    | 'list'
+    | 'scale';
+  choices: string[] | Choice[];
+  maxChoices?: number;
+  muliple?: boolean;
+  initial?: number;
+  delay?: number;
+  separator?: boolean;
+  sort?: boolean;
+  linebreak?: boolean;
+  edgeLength?: number;
+  align?: 'left' | 'right';
+  scroll?: boolean;
+}
+
+export interface BooleanPromptOptions extends BasePromptOptions {
+  type: 'confirm';
+  initial?: boolean;
+}
+
+export interface StringPromptOptions extends BasePromptOptions {
+  type: 'input' | 'invisible' | 'list' | 'password' | 'text';
+  initial?: string;
+  multiline?: boolean;
+}
+
+export interface NumberPromptOptions extends BasePromptOptions {
+  type: 'numeral';
+  min?: number;
+  max?: number;
+  delay?: number;
+  float?: boolean;
+  round?: boolean;
+  major?: number;
+  minor?: number;
+  initial?: number;
+}
+
+export interface SnippetPromptOptions extends BasePromptOptions {
+  type: 'snippet';
+  newline?: string;
+}
+
+export interface SortPromptOptions extends BasePromptOptions {
+  type: 'sort';
+  hint?: string;
+  drag?: boolean;
+  numbered?: boolean;
+}
+
+export type PromptOptions =
+  | ArrayPromptOptions
+  | BooleanPromptOptions
+  | StringPromptOptions
+  | NumberPromptOptions
+  | SnippetPromptOptions
+  | SortPromptOptions
+  | BasePromptOptions;
+
 const enquirer = new Enquirer();
 enquirer.register('editor', require('enquirer-prompt-editor'));
 
@@ -7,13 +110,8 @@ export class PromptCancelled extends Error {
   message = 'Prompt cannceled.';
 }
 
-// Hopefully we can remove this when enquirer hast better typings
-// tslint:disable-next-line:no-shadowed-variable
-type Arguments<R> = R extends (...args: infer R) => any ? R : never;
-type EnquirerQuestions = Arguments<typeof enquirer.prompt>[0];
-
 export const prompt = <T extends object = object>(
-  questions: EnquirerQuestions
+  questions: PromptOptions | PromptOptions[]
 ) =>
   enquirer.prompt(questions).catch(err => {
     // enquirer has a weird way to cancel prompts since 2.3
