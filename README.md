@@ -58,7 +58,7 @@ Uses your default browser to open the homepage of your project in Gitlab.
 
 _Alias: mr_
 
-Create a merge request for the current branch. The target branch will be your project's default branch (can be configured within Gitlab).
+Create a merge request for the current branch. The target branch is specified in your `laborious` config.
 
 #### `checkout`
 
