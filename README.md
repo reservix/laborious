@@ -6,7 +6,7 @@
 
 # laborious
 
-![https://www.npmjs.com/package/laborious](https://img.shields.io/npm/v/laborious.svg?style=flat-square) ![https://github.com/Reservix/laborious/blob/master/LICENCE](https://img.shields.io/npm/l/laborious.svg?style=flat-square)
+[![version][version-badge]][package] [![MIT License][license-badge]][license]
 
 > CLI tools for the lazy Gitlab developer.
 
@@ -96,3 +96,10 @@ const argv = yargs
   .commandDir(getCommandsDir())
   .alias('help', 'h').argv;
 ```
+
+<!-- LINKS -->
+
+[license]: https://github.com/Reservix/laborious/blob/master/LICENCE
+[license-badge]: https://img.shields.io/npm/l/laborious.svg?style=flat-square
+[package]: https://www.npmjs.com/package/laborious
+[version-badge]: https://img.shields.io/npm/v/laborious.svg?style=flat-square
