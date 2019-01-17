@@ -41,7 +41,11 @@ export const create = ({ baseUrl, token, userAgent }: GitlabApiConfig) => {
       });
       return res.body as T;
     } catch (e) {
-      const message: string[] = (e as GotError).response.body.message;
+      const body = (e as GotError).response.body;
+      const message: string[] = Array.isArray(body.message)
+        ? body.message
+        : [body.message];
+
       const err = new Error(message.map(s => `  ${s}`).join('\n'));
       err.name = 'GitlabRequestError';
       throw err;
