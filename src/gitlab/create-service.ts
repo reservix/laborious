@@ -32,10 +32,13 @@ export const create = ({ baseUrl, token, userAgent }: GitlabApiConfig) => {
   return async <T>(
     method: 'get' | 'post' | 'put' | 'patch' | 'head' | 'delete',
     url: string,
-    body?: GotJSONOptions['body']
+    options: Pick<GotJSONOptions, 'body' | 'query'> = {}
   ) => {
     try {
-      const res = await got[method](`${apiURL}${url}`, { ...config, body });
+      const res = await got[method](`${apiURL}${url}`, {
+        ...config,
+        ...options,
+      });
       return res.body as T;
     } catch (e) {
       const message: string[] = (e as GotError).response.body.message;
@@ -79,11 +82,18 @@ export const createGitlabService = (config: GitlabApiConfig) => {
     api<GitlabResponse.MergeRequest>(
       'post',
       pathnames.mergeRequests(options.id),
-      options
+      { body: options }
     );
 
-  project.listMergeRequests = (pid: GitlabProjectID) =>
-    api<GitlabResponse.MergeRequest[]>('get', pathnames.mergeRequests(pid));
+  project.listMergeRequests = (
+    pid: GitlabProjectID,
+    options: Partial<{ state: 'opened' | 'closed' | 'locked' | 'merged' }> = {
+      state: 'opened',
+    }
+  ) =>
+    api<GitlabResponse.MergeRequest[]>('get', pathnames.mergeRequests(pid), {
+      query: options,
+    });
 
   project.listBranches = (pid: GitlabProjectID) =>
     api<GitlabResponse.Branch[]>('get', pathnames.branches(pid));
