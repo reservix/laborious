@@ -4,8 +4,11 @@ import { Arguments, CommandBuilder } from 'yargs';
 
 import {
   ensureCurrentBranch,
+  ensureGitClean,
   ensureGitlabService,
   ensureLaboriousConfig,
+  fetch,
+  getBranchStatus,
   log,
   prompt,
 } from '..';
@@ -18,9 +21,32 @@ export const builder: CommandBuilder<any, any> = yargs =>
   yargs.default('cwd', process.cwd());
 
 export const handler = async (argv: Arguments<{ cwd: string }>) => {
-  const { gitlab, url } = await ensureGitlabService(argv.cwd);
-  const branch = await ensureCurrentBranch(argv.cwd);
-  const { mr } = await ensureLaboriousConfig(argv.cwd);
+  const { cwd } = argv;
+
+  const { gitlab, url } = await ensureGitlabService(cwd);
+  const branch = await ensureCurrentBranch(cwd);
+  const { mr } = await ensureLaboriousConfig(cwd);
+
+  const clean = await ensureGitClean(cwd);
+  if (!clean) {
+    log.warning(
+      chalk.bold(`Git is not clean!\n`) +
+        `Please make sure you do not have any outstanding changes.\n` +
+        `They will not be included in the merge request.`
+    );
+    return;
+  }
+
+  await fetch(cwd);
+  const status = await getBranchStatus(`origin/${mr.default_branch}`, cwd);
+  if (!status.synced) {
+    log.warning(
+      chalk.bold(`Your branch is not synced with your remote! `) +
+        chalk.dim(`(behind: ${status.behind}, ahead: ${status.ahead})\n`) +
+        `Please make sure to merge/rebase & push any updates before creating a merge request.`
+    );
+    return;
+  }
 
   const answers = await prompt<{
     type: string;

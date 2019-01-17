@@ -31,9 +31,9 @@ export const handler = async (argv: Arguments<{ cwd: string }>) => {
   const clean = await ensureGitClean(cwd);
   if (!clean) {
     log.warning(
-      chalk.bold('Git is not clean!\n\n') +
+      chalk.bold('Git is not clean!\n') +
         'Please make sure you do not have any outstanding changes.\n' +
-        'They might get los otherwise.'
+        'They might get lost otherwise.'
     );
     return;
   }
