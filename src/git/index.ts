@@ -1,6 +1,7 @@
 export * from './branch-exists';
 export * from './checkout-remote-branch';
 export * from './fetch';
+export * from './get-branch-status';
 export * from './get-branch';
 export * from './get-remote-url';
 export * from './get-respository';
