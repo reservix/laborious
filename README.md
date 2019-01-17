@@ -6,7 +6,7 @@
 
 # laborious
 
-[![version][version-badge]][package] [![MIT License][license-badge]][license]
+[![buid][ci-badge]][ci] [![version][version-badge]][package] [![MIT License][license-badge]][license]
 
 > CLI tools for the lazy Gitlab developer.
 
@@ -99,6 +99,8 @@ const argv = yargs
 
 <!-- LINKS -->
 
+[ci]: https://travis-ci.org/Reservix/laborious
+[ci-badge]: https://img.shields.io/travis/reservix/laborious.svg?style=flat-square
 [license]: https://github.com/Reservix/laborious/blob/master/LICENCE
 [license-badge]: https://img.shields.io/npm/l/laborious.svg?style=flat-square
 [package]: https://www.npmjs.com/package/laborious
