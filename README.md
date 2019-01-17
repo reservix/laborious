@@ -100,7 +100,7 @@ const argv = yargs
 <!-- LINKS -->
 
 [ci]: https://travis-ci.org/Reservix/laborious
-[ci-badge]: https://img.shields.io/travis/reservix/laborious.svg?style=flat-square
+[ci-badge]: https://img.shields.io/travis/Reservix/laborious.svg?style=flat-square
 [license]: https://github.com/Reservix/laborious/blob/master/LICENCE
 [license-badge]: https://img.shields.io/npm/l/laborious.svg?style=flat-square
 [package]: https://www.npmjs.com/package/laborious
