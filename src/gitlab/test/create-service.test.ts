@@ -60,8 +60,14 @@ test('get list of merge requests', async () => {
   expect(got.get).toMatchLastCallSnapshot();
 });
 
+test('get list of closed merge requests', async () => {
+  await service.project.listMergeRequests('id id id', { state: 'closed' });
+  expect(got.get).toHaveBeenCalled();
+  expect(got.get).toMatchLastCallSnapshot();
+});
+
 test('get list of branches', async () => {
-  await service.project.listMergeRequests('blubb');
+  await service.project.listBranches('blubb');
   expect(got.get).toHaveBeenCalled();
   expect(got.get).toMatchLastCallSnapshot();
 });

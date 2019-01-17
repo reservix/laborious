@@ -24,7 +24,6 @@ exports[`get a project: toMatchLastCallSnapshot 1`] = `
 Array [
   "https://gitlab.example.com/api/v4/projects/ids%20can%20also%20be%20strings",
   Object {
-    "body": undefined,
     "headers": Object {
       "accept": "application/json",
       "private-token": "T0kn",
@@ -37,15 +36,31 @@ Array [
 
 exports[`get list of branches: toMatchLastCallSnapshot 1`] = `
 Array [
-  "https://gitlab.example.com/api/v4/projects/blubb/merge_requests",
+  "https://gitlab.example.com/api/v4/projects/blubb/repository/branches",
   Object {
-    "body": undefined,
     "headers": Object {
       "accept": "application/json",
       "private-token": "T0kn",
       "user-agent": "Testing laborious",
     },
     "json": true,
+  },
+]
+`;
+
+exports[`get list of closed merge requests: toMatchLastCallSnapshot 1`] = `
+Array [
+  "https://gitlab.example.com/api/v4/projects/id%20id%20id/merge_requests",
+  Object {
+    "headers": Object {
+      "accept": "application/json",
+      "private-token": "T0kn",
+      "user-agent": "Testing laborious",
+    },
+    "json": true,
+    "query": Object {
+      "state": "closed",
+    },
   },
 ]
 `;
@@ -54,13 +69,15 @@ exports[`get list of merge requests: toMatchLastCallSnapshot 1`] = `
 Array [
   "https://gitlab.example.com/api/v4/projects/id%20id%20id/merge_requests",
   Object {
-    "body": undefined,
     "headers": Object {
       "accept": "application/json",
       "private-token": "T0kn",
       "user-agent": "Testing laborious",
     },
     "json": true,
+    "query": Object {
+      "state": "opened",
+    },
   },
 ]
 `;
@@ -69,7 +86,6 @@ exports[`get version: toMatchLastCallSnapshot 1`] = `
 Array [
   "https://gitlab.example.com/api/v4/version",
   Object {
-    "body": undefined,
     "headers": Object {
       "accept": "application/json",
       "private-token": "T0kn",
