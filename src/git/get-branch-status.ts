@@ -17,11 +17,11 @@ const getBehindCount = async (branch: string, cwd: string) => {
 
 const getUnpushedCommitsCount = async (cwd: string) => {
   const { stdout } = await execa('git', ['shortlog', '-s', '@{u}..'], { cwd });
+  const commits = stdout.match(AHEAD_REGEXP);
 
-  return stdout
-    .match(AHEAD_REGEXP)!
-    .map(s => Number(s.trim()))
-    .reduce((sum, n) => sum + n, 0);
+  return commits === null
+    ? 0
+    : commits.map(s => Number(s.trim())).reduce((sum, n) => sum + n, 0);
 };
 
 export const getBranchStatus = async (target: string, cwd: string) => {
