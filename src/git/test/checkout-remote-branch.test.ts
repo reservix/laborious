@@ -18,7 +18,7 @@ Array [
       "refs/heads",
     ],
     Object {
-      "cwd": "/Users/sebastian/Projects/laborious",
+      "cwd": "cwd",
     },
   ],
   Array [
