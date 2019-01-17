@@ -38,16 +38,10 @@ export const handler = async (argv: Arguments<{ cwd: string }>) => {
   }
 
   await fetch(cwd);
-  const status = await getBranchStatus(
-    branch,
-    `origin/${mr.default_branch}`,
-    cwd
-  );
+  const status = await getBranchStatus(`origin/${mr.default_branch}`, cwd);
   if (!status.synced) {
     log.warning(
-      chalk.bold(
-        `Your branch is not up to date with "origin/${mr.default_branch}"! `
-      ) +
+      chalk.bold(`Your branch is not synced with your remote! `) +
         chalk.dim(`(behind: ${status.behind}, ahead: ${status.ahead})\n`) +
         `Please make sure to merge/rebase & push any updates before creating a merge request.`
     );
