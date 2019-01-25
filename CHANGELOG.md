@@ -1,8 +1,9 @@
-## [0.4.2](https://github.com/reservix/laborious/compare/v0.4.1...v0.4.2) (2019-01-25)
+## [0.4.3](https://github.com/reservix/laborious/compare/v0.4.1...v0.4.3) (2019-01-25)
 
 
-### Build System
+### Tooling
 
+- Update "conventional-changelog-emojis" ([847f930](https://github.com/reservix/laborious/commit/847f930))
 - Update `yup` ([5ab3c8f](https://github.com/reservix/laborious/commit/5ab3c8f))
 - Update dev dependencies ([4257823](https://github.com/reservix/laborious/commit/4257823))
 
@@ -38,7 +39,7 @@
 - Only list open MRs in checkout (#3) ([f0ea7bb](https://github.com/reservix/laborious/commit/f0ea7bb)), closes [#3](https://github.com/reservix/laborious/issues/3) [#2](https://github.com/reservix/laborious/issues/2)
 
 
-### Build System
+### Tooling
 
 - Add `typescript-tslint-plugin` to dependencies ([fa014ab](https://github.com/reservix/laborious/commit/fa014ab))
 - Add travis ([e9308ea](https://github.com/reservix/laborious/commit/e9308ea))
