@@ -75,10 +75,10 @@
   resolved "https://registry.yarnpkg.com/@types/git-url-parse/-/git-url-parse-9.0.0.tgz#aac1315a44fa4ed5a52c3820f6c3c2fb79cbd12d"
   integrity sha512-kA2RxBT/r/ZuDDKwMl+vFWn1Z0lfm1/Ik6Qb91wnSzyzCDa/fkM8gIOq6ruB7xfr37n6Mj5dyivileUVKsidlg==
 
-"@types/got@9.3.0":
-  version "9.3.0"
-  resolved "https://registry.yarnpkg.com/@types/got/-/got-9.3.0.tgz#b659ce208234d30cd9ce14b5bccb57937a9f21dd"
-  integrity sha512-XEyz4tCx6RnybUcw0ZmpEkNNNxc+QcnEY0r0VV5Ocp+7fjK60iMOvj1mfNMwgzMS7sNQMl+L8SIW7lO/QBAkxg==
+"@types/got@9.4.0":
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/@types/got/-/got-9.4.0.tgz#5c8b0f5a0dc1b67e676430561a0b85a0fde1d12d"
+  integrity sha512-18c/Bu9tpv6owaz17urNFfkzfxdmr3PoREqFpAkUasBbV9gc7OqChRj/e2f98abiJo7j++PhArfm66EFqAY4qA==
   dependencies:
     "@types/node" "*"
     "@types/tough-cookie" "*"
@@ -88,10 +88,10 @@
   resolved "https://registry.yarnpkg.com/@types/indent-string/-/indent-string-3.2.0.tgz#ce0016b6527a582e98122d593000772a965db665"
   integrity sha512-9iJXKl51MSjBOO8AWJyDtegBy4PkcgwIQCNYmHA63qtYlaISD6sEcB4jZ8APOdBacZJ8fZwxZpN7iwYlyE6eGw==
 
-"@types/jest@23.3.12":
-  version "23.3.12"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.12.tgz#7e0ced251fa94c3bc2d1023d4b84b2992fa06376"
-  integrity sha512-/kQvbVzdEpOq4tEWT79yAHSM4nH4xMlhJv2GrLVQt4Qmo8yYsPdioBM1QpN/2GX1wkfMnyXvdoftvLUr0LBj7Q==
+"@types/jest@23.3.13":
+  version "23.3.13"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.13.tgz#c81484b6f4ca007bb09887ed15ecb3286d58f928"
+  integrity sha512-ePl4l+7dLLmCucIwgQHAgjiepY++qcI6nb8eAwGNkB6OxmTe3Z9rQU3rSpomqu42PCCnlThZbOoxsf+qylJsLA==
 
 "@types/lodash.merge@4.6.4":
   version "4.6.4"
@@ -139,15 +139,15 @@
   resolved "https://registry.yarnpkg.com/@types/tough-cookie/-/tough-cookie-2.3.4.tgz#821878b81bfab971b93a265a561d54ea61f9059f"
   integrity sha512-Set5ZdrAaKI/qHdFlVMgm/GsAv/wkXhSTuZFkJ+JI7HK+wIkIlOaUXSXieIvJ0+OvGIqtREFoE+NHJtEq0gtEw==
 
-"@types/yargs@12.0.5":
-  version "12.0.5"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
-  integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
+"@types/yargs@12.0.8":
+  version "12.0.8"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.8.tgz#0b45bf0607a5509b921335658d87489c12955176"
+  integrity sha512-OMSKUmZ09gbzITzx4nxnJqhprWC7JqsmlrEsVtb+cv3GXHNpv0kktqxhboKX52FnMggkQvT5ezt8pxTWyKpJHA==
 
-"@types/yup@0.26.4":
-  version "0.26.4"
-  resolved "https://registry.yarnpkg.com/@types/yup/-/yup-0.26.4.tgz#b6527d1ea167ac8049b6d62b45cff8eadfe883c5"
-  integrity sha512-R6Mgx+puMTwst8jX3rJDN2Ncu9jF8P/88NOPa8DeCx3OU6Md+Fuo8AV4+WqNCujWNp/XjJtQd4o3fH0/9O19yw==
+"@types/yup@0.26.6":
+  version "0.26.6"
+  resolved "https://registry.yarnpkg.com/@types/yup/-/yup-0.26.6.tgz#3197372455af255c48732f2e3b336b415e025701"
+  integrity sha512-B5Wy5IcmI+mISP2O8Y4J4e4+XVdpMgo9mLQ5mOUvjNYBWWqVxtfB6KkJO+MTfZ/KbwDaXsWtYM6xQnNo/tYI7w==
 
 JSONStream@^1.0.4:
   version "1.3.5"
@@ -958,10 +958,10 @@ conventional-changelog-ember@^2.0.2:
   dependencies:
     q "^1.5.1"
 
-conventional-changelog-emojis@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/conventional-changelog-emojis/-/conventional-changelog-emojis-1.1.0.tgz#73fe293868a923f0fcc7b2e45eeed840d3b828d8"
-  integrity sha512-6tVgbLvoQmN+dmjd4yQp/aLHkP8MJCxrNg2xJKd7UhTOR5cGtMWoy+AdPC4hcqljYeidFZX8pa/0RmUC8DiiMQ==
+conventional-changelog-emojis@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-emojis/-/conventional-changelog-emojis-1.2.0.tgz#7cb599c9d6a5e726960f09a16a9846a45c519fd7"
+  integrity sha512-DGRUxhiCnrQ/x4QIGwFXmqvZxNSkraTa3G3b8l4fYDj8OgKaypmOi9BZsC2t7WJXmSCXnp/OrbPgIGWtTsuKSg==
   dependencies:
     commit-emojis "1.0.0"
     compare-func "1.3.2"
@@ -3854,10 +3854,10 @@ preserve@^0.2.0:
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
   integrity sha1-gV7R9uvGWSb4ZbMQwHE7yzMVzks=
 
-prettier@1.15.3:
-  version "1.15.3"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.15.3.tgz#1feaac5bdd181237b54dbe65d874e02a1472786a"
-  integrity sha512-gAU9AGAPMaKb3NNSUUuhhFAS7SCO4ALTN4nRIn6PJ075Qd28Yn2Ig2ahEJWdJwJmlEBTUfC7mMUSFy8MwsOCfg==
+prettier@1.16.1:
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.16.1.tgz#534c2c9d7853f8845e5e078384e71973bd74089f"
+  integrity sha512-XXUITwIkGb3CPJ2hforHah/zTINRyie5006Jd2HKy2qz7snEJXl0KLfsJZW/wst9g6R2rFvqba3VpNYdu1hDcA==
 
 pretty-format@^23.6.0:
   version "23.6.0"
@@ -3867,10 +3867,10 @@ pretty-format@^23.6.0:
     ansi-regex "^3.0.0"
     ansi-styles "^3.2.0"
 
-pretty-quick@1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-1.9.0.tgz#d42fa46d7a4f1a6029bb12c5f74da95331691d00"
-  integrity sha512-PEaDsM5tA+33b4JdnQ7348Qkew9BMqZGrcpRJpWVA1IN31HjJD8GTDTS060d92RW5T4uYOdy0TJW4o1/JsIYSA==
+pretty-quick@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-1.10.0.tgz#d86cc46fe92ed8cfcfba6a082ec5949c53858198"
+  integrity sha512-uNvm2N3UWmnZRZrClyQI45hIbV20f5BpSyZY51Spbvn4APp9+XLyX4bCjWRGT3fGyVyQ/2/iw7dbQq1UUaq7SQ==
   dependencies:
     chalk "^2.3.0"
     execa "^0.8.0"
@@ -4829,19 +4829,19 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
-typescript-tslint-plugin@0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/typescript-tslint-plugin/-/typescript-tslint-plugin-0.2.1.tgz#6a0361cd311bdc9dcec2e70c8a54cab16829e47f"
-  integrity sha512-j0Tn/2GlAwnaklSNMOZRNpv96j6IWkQF6RuTJ5WowfNlgdYqnJpSaVFwT22INwJiPDDGKNe/aATT0qkU0pWM4w==
+typescript-tslint-plugin@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/typescript-tslint-plugin/-/typescript-tslint-plugin-0.3.0.tgz#b58ab0227d12b576371742bc75604b8a7a2784ae"
+  integrity sha512-QlfcS5YebM55cUISn3mgal+ePtsRmyh1RJ0DqHPrF7+NEDO8P+ucDsD1GlLyYaIJQvVAbkekUmczsjzQk5eoKA==
   dependencies:
     minimatch "^3.0.4"
     mock-require "^3.0.2"
     vscode-languageserver "^5.1.0"
 
-typescript@3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.2.2.tgz#fe8101c46aa123f8353523ebdcf5730c2ae493e5"
-  integrity sha512-VCj5UiSyHBjwfYacmDuc/NOk4QQixbE+Wn7MFJuS0nRuPQbof132Pw4u53dm264O8LPc2MVsc7RJNml5szurkg==
+typescript@3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.2.4.tgz#c585cb952912263d915b462726ce244ba510ef3d"
+  integrity sha512-0RNDbSdEokBeEAkgNbxJ+BLwSManFy9TeXz8uW+48j/xhEXv1ePME60olyzw2XzUqUBNAYFeJadIqAgNqIACwg==
 
 uglify-js@^3.1.4:
   version "3.4.9"
