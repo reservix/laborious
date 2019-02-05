@@ -22,6 +22,7 @@ const laboriousConfigFileSchema = object<LaboriousConfig>({
       );
     }),
   }),
+  token_path: string(),
 });
 
 export const validateLaboriousConfig = async (val: any) => {

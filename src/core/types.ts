@@ -7,6 +7,7 @@ export type LaboriousMergeRequestConfig = {
 
 export type LaboriousConfig = {
   mr: LaboriousMergeRequestConfig;
+  token_path?: string;
 };
 
 export type LaboriousInternalConfig = LaboriousConfig & {

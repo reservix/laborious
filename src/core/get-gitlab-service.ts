@@ -1,16 +1,29 @@
-import { ensureRemoteUrl } from '../git';
-import { createGitlabService, parseGitUrl } from '../gitlab';
+import { resolve } from 'path';
+import { createGitlabService, parseGitUrl, ensureRemoteUrl } from '..';
 
-import { LABORIOUS_GITLAB_TOKEN_PATH, LABORIOUS_NAMESPACE } from './constants';
-import { ensureGitlabToken } from './get-gitlab-token';
+import {
+  LABORIOUS_GITLAB_TOKEN_PATH,
+  LABORIOUS_NAMESPACE,
+  getLaboriousConfig,
+  ensureGitlabToken,
+} from '.';
+
+export const getGitlabTokenPath = async (cwd: string) => {
+  const laborious = await getLaboriousConfig(cwd);
+
+  if (laborious !== null && laborious.token_path) {
+    return resolve(laborious._.project, laborious.token_path);
+  }
+
+  return LABORIOUS_GITLAB_TOKEN_PATH;
+};
 
 export const ensureGitlabConfig = async (cwd: string) => {
   const remote = await ensureRemoteUrl(cwd);
   const url = parseGitUrl(remote);
-  const token = await ensureGitlabToken(
-    LABORIOUS_GITLAB_TOKEN_PATH,
-    url.origin
-  );
+
+  const path = await getGitlabTokenPath(cwd);
+  const token = await ensureGitlabToken(path, url.origin);
   return { url, token };
 };
 

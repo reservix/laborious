@@ -36,6 +36,12 @@ test('default config is valid', async () => {
   expect(validateLaboriousConfig(defaultConfig)).resolves.not.toThrow();
 });
 
+test('allow optional "token_path"', async () => {
+  expect(
+    validateLaboriousConfig({ ...defaultConfig, token_path: '/custom/path' })
+  ).resolves.not.toThrow();
+});
+
 test('throw if config is invalud', async () => {
   expect(
     validateLaboriousConfig({
