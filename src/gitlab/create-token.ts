@@ -8,13 +8,7 @@ export const createGitlabToken = async (
   filePath: string,
   gitlabUrl?: string
 ) => {
-  if (!gitlabUrl) {
-    log.info(
-      `You can find information about how to create an access token` +
-        `in the official Gitlab documentation:\n` +
-        `https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html`
-    );
-  } else {
+  if (gitlabUrl) {
     const url = new URL(gitlabUrl);
     url.pathname = 'profile/personal_access_tokens';
 
@@ -32,6 +26,12 @@ export const createGitlabToken = async (
           `and paste it below.`
       );
     }
+  } else {
+    log.info(
+      `You can find information about how to create an access token` +
+        `in the official Gitlab documentation:\n` +
+        `https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html`
+    );
   }
 
   const { token } = await prompt<{ token: string }>({

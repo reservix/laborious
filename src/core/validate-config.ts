@@ -32,7 +32,7 @@ export const validateLaboriousConfig = async (val: any) => {
     const { errors } = err as ValidationError;
     throw new Error(
       `Config file is erroneous. Please correct the following properties:\n` +
-        errors.map(msg => `  - ${msg}\n`)
+        errors.map(msg => `  - ${msg}`).join('\n')
     );
   }
 };

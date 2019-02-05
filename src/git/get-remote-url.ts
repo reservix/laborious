@@ -22,7 +22,7 @@ export const ensureRemoteUrl = async (cwd: string) => {
       type: 'input',
       name: 'remote',
       message: 'Remote URL:',
-      validate: async val => await isGitUrl(val),
+      validate: async val => isGitUrl(val),
     });
 
     if (!remote) {

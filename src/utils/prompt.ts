@@ -1,16 +1,17 @@
 import Enquirer from 'enquirer';
 
 // Hopefully we can remove this when enquirer hast better typings
-// tslint:disable-next-line:no-shadowed-variable
 export interface BasePromptOptions {
   name: string | (() => string);
   type: string | (() => string);
   message: string | (() => string) | (() => Promise<string>);
   initial?: any;
   required?: boolean;
+  skip?: ((state: object) => boolean | Promise<boolean>) | boolean;
+  stdin?: NodeJS.ReadStream;
+  stdout?: NodeJS.WriteStream;
   format?(value: string): string | Promise<string>;
   result?(value: string): string | Promise<string>;
-  skip?: ((state: object) => boolean | Promise<boolean>) | boolean;
   validate?(
     value: string
   ): boolean | Promise<boolean> | string | Promise<string>;
@@ -24,8 +25,6 @@ export interface BasePromptOptions {
     value: any,
     prompt: Enquirer.Prompt
   ): boolean | Promise<boolean>;
-  stdin?: NodeJS.ReadStream;
-  stdout?: NodeJS.WriteStream;
 }
 
 export interface Choice {
@@ -103,7 +102,7 @@ export type PromptOptions =
   | SortPromptOptions
   | BasePromptOptions;
 
-const enquirer = new Enquirer();
+const enquirer = new Enquirer<any>();
 enquirer.register('editor', require('enquirer-prompt-editor'));
 
 export class PromptCancelled extends Error {
@@ -112,11 +111,12 @@ export class PromptCancelled extends Error {
 
 export const prompt = <T extends object = object>(
   questions: PromptOptions | PromptOptions[]
-) =>
+): Promise<T> =>
   enquirer.prompt(questions).catch(err => {
-    // enquirer has a weird way to cancel prompts since 2.3
+    // Enquirer has a weird way to cancel prompts since 2.3
     if (err === '') {
       return Promise.reject(new PromptCancelled());
     }
+
     return Promise.reject(err);
-  }) as Promise<T>;
+  });

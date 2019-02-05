@@ -70,6 +70,7 @@ export const handler = async (argv: Arguments<{ cwd: string }>) => {
             if (a.default) {
               return -1;
             }
+
             return 1;
           })
           .map<{ message: string; value: Choice }>(b => ({

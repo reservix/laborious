@@ -4,6 +4,7 @@ import tempy from 'tempy';
 import { createGitlabToken } from '../create-token';
 import { outputFile } from 'fs-extra';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { __setAnswers } = require('../../utils/prompt');
 jest.mock('opn');
 jest.mock('fs-extra');

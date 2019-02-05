@@ -7,7 +7,9 @@ import { createConfig } from './create-config';
 import { LaboriousInternalConfig } from './types';
 import { validateLaboriousConfig } from './validate-config';
 
-export const getLaboriousConfig = async (cwd: string) => {
+export const getLaboriousConfig = async (
+  cwd: string
+): Promise<LaboriousInternalConfig | null> => {
   const projectPath = await ensureRepository(cwd);
 
   const explorer = cosmiconfig(LABORIOUS_NAMESPACE, {
@@ -20,6 +22,7 @@ export const getLaboriousConfig = async (cwd: string) => {
             `but received ${typeof result.config} in "${result.filepath}."`
         );
       }
+
       return result;
     },
   });
@@ -34,7 +37,7 @@ export const getLaboriousConfig = async (cwd: string) => {
   return {
     ...config,
     _: { file: loaded.filepath, project: projectPath },
-  } as LaboriousInternalConfig;
+  };
 };
 
 export const ensureLaboriousConfig = async (cwd: string) => {

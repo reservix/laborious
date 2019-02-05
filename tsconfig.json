@@ -13,14 +13,8 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "outDir": "lib",
-    "plugins": [
-      {
-        "name": "typescript-tslint-plugin",
-        "alwaysShowRuleFailuresAsWarnings": false
-      }
-    ]
+    "outDir": "lib"
   },
   "include": ["src/**/*"],
-  "exclude": ["lib", "node_modules", "jest.setup.ts"]
+  "exclude": ["bin", "lib", "node_modules", "jest.setup.ts"]
 }

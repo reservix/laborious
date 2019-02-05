@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { isMockFunction } = require('jest-mock');
 const { toMatchSnapshot } = require('jest-snapshot');
 

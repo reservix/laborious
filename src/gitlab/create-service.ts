@@ -15,6 +15,8 @@ export type GitlabApiConfig = {
  * `got.create` is currently not part of the typings and adding them failed
  * (https://github.com/DefinitelyTyped/DefinitelyTyped/pull/31385). So we just
  * code "around" this by just using `got`.
+ *
+ * @returns GitlabService
  */
 export const create = ({ baseUrl, token, userAgent }: GitlabApiConfig) => {
   const apiURL = new URL(baseUrl);
@@ -59,13 +61,13 @@ export const createGitlabService = (config: GitlabApiConfig) => {
   // Version
   // ---------------
   function version() {
-    return api<GitlabResponse.Version>('get', pathnames.version());
+    return api<GitlabResponse['Version']>('get', pathnames.version());
   }
 
   // Project
   // ---------------
   function project(pid: GitlabProjectID) {
-    return api<GitlabResponse.Project>('get', pathnames.project(pid));
+    return api<GitlabResponse['Project']>('get', pathnames.project(pid));
   }
 
   project.createMergeRequest = (options: {
@@ -83,7 +85,7 @@ export const createGitlabService = (config: GitlabApiConfig) => {
     allow_maintainer_to_push?: boolean;
     squash?: boolean;
   }) =>
-    api<GitlabResponse.MergeRequest>(
+    api<GitlabResponse['MergeRequest']>(
       'post',
       pathnames.mergeRequests(options.id),
       { body: options }
@@ -95,12 +97,12 @@ export const createGitlabService = (config: GitlabApiConfig) => {
       state: 'opened',
     }
   ) =>
-    api<GitlabResponse.MergeRequest[]>('get', pathnames.mergeRequests(pid), {
+    api<GitlabResponse['MergeRequest'][]>('get', pathnames.mergeRequests(pid), {
       query: options,
     });
 
   project.listBranches = (pid: GitlabProjectID) =>
-    api<GitlabResponse.Branch[]>('get', pathnames.branches(pid));
+    api<GitlabResponse['Branch'][]>('get', pathnames.branches(pid));
 
   return {
     version,

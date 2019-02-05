@@ -8,7 +8,9 @@ import { defaultConfig } from './default-config';
 import { LaboriousMergeRequestConfig, LaboriousInternalConfig } from './types';
 import { validateLaboriousConfig } from './validate-config';
 
-export const createConfig = async (cwd: string) => {
+export const createConfig = async (
+  cwd: string
+): Promise<LaboriousInternalConfig> => {
   const projectPath = await ensureRepository(cwd);
 
   log.info('Please answer the following questions about Merge Requests!');
@@ -50,5 +52,5 @@ export const createConfig = async (cwd: string) => {
   return {
     ...config,
     _: { file: configFilePath, project: projectPath },
-  } as LaboriousInternalConfig;
+  };
 };

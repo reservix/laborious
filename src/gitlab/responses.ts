@@ -1,30 +1,30 @@
-export namespace GitlabResponse {
-  export type Version = { version: string; revision: string };
+export type Commit = {
+  author_email: string;
+  author_name: string;
+  authored_date: string;
+  committed_date: string;
+  committer_email: string;
+  committer_name: string;
+  id: string;
+  short_id: string;
+  title: string;
+  message: string;
+  parent_ids: string[];
+};
 
-  export type User = {
-    id: number;
-    name: string;
-    username: string;
-    state: string;
-    avatar_url: string;
-    web_url: string;
-  };
+export type User = {
+  id: number;
+  name: string;
+  username: string;
+  state: string;
+  avatar_url: string;
+  web_url: string;
+};
 
-  type Commit = {
-    author_email: string;
-    author_name: string;
-    authored_date: string;
-    committed_date: string;
-    committer_email: string;
-    committer_name: string;
-    id: string;
-    short_id: string;
-    title: string;
-    message: string;
-    parent_ids: string[];
-  };
+export interface GitlabResponse {
+  Version: { version: string; revision: string };
 
-  export type Project = {
+  Project: {
     id: number;
     description: null;
     default_branch: string;
@@ -108,7 +108,7 @@ export namespace GitlabResponse {
     };
   };
 
-  export type Branch = {
+  Branch: {
     name: string;
     merged: boolean;
     protected: boolean;
@@ -119,7 +119,7 @@ export namespace GitlabResponse {
     commit: Commit;
   };
 
-  export type MergeRequest = {
+  MergeRequest: {
     id: number;
     iid: number;
     project_id: number;

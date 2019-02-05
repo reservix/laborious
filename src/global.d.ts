@@ -1,5 +1,5 @@
 declare namespace jest {
-  interface Matchers<R> {
-    toMatchLastCallSnapshot(): R;
+  interface Matchers<T> {
+    toMatchLastCallSnapshot(): T;
   }
 }

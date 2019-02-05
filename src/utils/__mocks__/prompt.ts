@@ -1,6 +1,7 @@
 let mockedAnswers: { [name: string]: any } = {};
-export const __setAnswers = (answers: { [name: string]: any }) =>
-  (mockedAnswers = answers);
+export const __setAnswers = (answers: { [name: string]: any }) => {
+  mockedAnswers = answers;
+};
 
 type Questions = {
   name: string;
@@ -16,9 +17,9 @@ export const prompt = jest
         answers[name] =
           name in mockedAnswers
             ? mockedAnswers[name]
-            : typeof initial !== 'undefined'
-            ? initial
-            : null;
+            : typeof initial === 'undefined'
+            ? null
+            : initial;
         return answers;
       }, {})
     );

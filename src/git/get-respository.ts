@@ -24,5 +24,6 @@ export const ensureRepository = async (cwd: string) => {
   if (!initGit) {
     throw new Error(`Aborting. laborious requires a git repository to work.`);
   }
+
   return init(cwd);
 };

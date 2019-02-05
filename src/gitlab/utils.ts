@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import gitUrl from 'git-url-parse';
 import { URL } from 'url';
 
