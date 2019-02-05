@@ -23,12 +23,15 @@ export const builder: CommandBuilder<any, any> = yargs =>
 export const handler = async (argv: Arguments<{ cwd: string }>) => {
   const { cwd } = argv;
 
+  let spinner = ora('Checking git and fetching updates...').start();
+
   const { gitlab, url } = await ensureGitlabService(cwd);
   const branch = await ensureCurrentBranch(cwd);
   const { mr } = await ensureLaboriousConfig(cwd);
 
   const clean = await ensureGitClean(cwd);
   if (!clean) {
+    spinner.stop();
     log.warning(
       chalk.bold(`Git is not clean!\n`) +
         `Please make sure you do not have any outstanding changes.\n` +
@@ -40,6 +43,7 @@ export const handler = async (argv: Arguments<{ cwd: string }>) => {
   await fetch(cwd);
   const status = await getBranchStatus(`origin/${mr.default_branch}`, cwd);
   if (!status.synced) {
+    spinner.stop();
     log.warning(
       chalk.bold(`Your branch is not synced with your remote! `) +
         chalk.dim(`(behind: ${status.behind}, ahead: ${status.ahead})\n`) +
@@ -48,6 +52,7 @@ export const handler = async (argv: Arguments<{ cwd: string }>) => {
     return;
   }
 
+  spinner.succeed('Git is clean and up to date.');
   const answers = await prompt<{
     type: string;
     title: string;
@@ -78,7 +83,7 @@ export const handler = async (argv: Arguments<{ cwd: string }>) => {
     },
   ]);
 
-  const spinner = ora('Pushing merge request...').start();
+  spinner = ora('Pushing merge request...').start();
   try {
     const res = await gitlab.project.createMergeRequest({
       id: url.project_with_namespace,
