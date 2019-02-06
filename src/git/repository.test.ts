@@ -1,4 +1,76 @@
-import { isGitUrl } from '../utils';
+import originalExeca from 'execa';
+import {
+  fastForward,
+  fetch,
+  getRefByUpstream,
+  isRepositoryClean,
+  isGitUrl,
+} from './repository';
+
+const execa = (originalExeca as any) as jest.Mock;
+jest.mock('execa');
+
+beforeEach(() => {
+  execa.mockClear();
+});
+
+test('fast forward', async () => {
+  await fastForward('cwd');
+  expect(((execa as any) as jest.Mock).mock.calls).toMatchInlineSnapshot(`
+Array [
+  Array [
+    "git",
+    Array [
+      "merge",
+      "--ff-only",
+    ],
+    Object {
+      "cwd": "cwd",
+    },
+  ],
+]
+`);
+});
+
+test('fetch', async () => {
+  await fetch('cwd');
+  expect(((execa as any) as jest.Mock).mock.calls).toMatchInlineSnapshot(`
+Array [
+  Array [
+    "git",
+    Array [
+      "fetch",
+    ],
+    Object {
+      "cwd": "cwd",
+    },
+  ],
+]
+`);
+});
+
+test('getRefByUpstream', async () => {
+  execa.mockResolvedValue({
+    stdout:
+      'tracking-example||origin/example\n' +
+      'has-ref-to-example||origin/has-ref-to-example',
+  });
+
+  expect(await getRefByUpstream('origin/example')).toMatchInlineSnapshot(
+    `"tracking-example"`
+  );
+  expect(await getRefByUpstream('origin/does-no-exist')).toMatchInlineSnapshot(
+    `null`
+  );
+});
+
+test('si repository clean', async () => {
+  ((execa as any) as jest.Mock).mockResolvedValue({ stdout: '' });
+  expect(isRepositoryClean('cwd')).resolves.toBeTruthy();
+
+  ((execa as any) as jest.Mock).mockResolvedValue({ stdout: 'nope' });
+  expect(isRepositoryClean('cwd')).resolves.toBeFalsy();
+});
 
 test('is valid git url', () => {
   const validURLs = [
