@@ -3,6 +3,7 @@ import ora from 'ora';
 import { Arguments, CommandBuilder } from 'yargs';
 
 import {
+  createMessage,
   ensureCurrentBranch,
   ensureGitClean,
   ensureGitlabService,
@@ -10,7 +11,6 @@ import {
   fetch,
   getBranchStatus,
   log,
-  prompt,
 } from '..';
 
 export const command = 'merge-request';
@@ -53,35 +53,7 @@ export const handler = async (argv: Arguments<{ cwd: string }>) => {
   }
 
   spinner.succeed('Git is clean and up to date.');
-  const answers = await prompt<{
-    type: string;
-    title: string;
-    description: string;
-  }>([
-    {
-      type: 'autocomplete',
-      name: 'type',
-      message: 'MR Type:',
-      choices: Object.entries(mr.types).map(([name, emoji]) => ({
-        message: `${emoji}  ${name}`,
-        value: emoji,
-      })),
-    },
-    {
-      type: 'input',
-      name: 'title',
-      message: 'MR Title:',
-      validate: msg =>
-        msg.length > 5
-          ? true
-          : "The title seems a little short, don't you think!",
-    },
-    {
-      type: 'editor',
-      name: 'description',
-      message: 'Summarize your changes:',
-    },
-  ]);
+  const answers = await createMessage(mr, 'Merge Request message');
 
   spinner = ora('Pushing merge request...').start();
   try {
