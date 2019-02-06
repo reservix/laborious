@@ -1,5 +1,5 @@
 import got from 'got';
-import { createGitlabService } from '../create-service';
+import { createGitlabService } from './service';
 
 jest.mock('got', () => {
   const mock = ['get', 'post', 'put', 'patch', 'head', 'delete'].reduce(

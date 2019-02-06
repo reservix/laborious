@@ -1,15 +1,15 @@
 import opn from 'opn';
 import tempy from 'tempy';
 
-import { createGitlabToken } from '../create-token';
+import { createGitlabToken } from './token';
 import { outputFile } from 'fs-extra';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { __setAnswers } = require('../../utils/prompt');
+const { __setAnswers } = require('../utils/prompt');
 jest.mock('opn');
 jest.mock('fs-extra');
-jest.mock('../../utils/log');
-jest.mock('../../utils/prompt');
+jest.mock('../utils/log');
+jest.mock('../utils/prompt');
 
 beforeEach(() => {
   __setAnswers({

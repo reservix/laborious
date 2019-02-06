@@ -1,7 +1,7 @@
 import got, { GotJSONOptions, GotError } from 'got';
 import { URL } from 'url';
 
-import * as pathnames from './pathnames';
+import * as pathname from './pathname';
 import { GitlabResponse, GitlabProjectID } from './types';
 
 export type GitlabApiConfig = {
@@ -19,7 +19,7 @@ export type GitlabApiConfig = {
  */
 export const create = ({ baseUrl, token, userAgent }: GitlabApiConfig) => {
   const apiURL = new URL(baseUrl);
-  apiURL.pathname = pathnames.API_PREFIX;
+  apiURL.pathname = pathname.API_PREFIX;
 
   const config: GotJSONOptions = {
     json: true,
@@ -60,13 +60,13 @@ export const createGitlabService = (config: GitlabApiConfig) => {
   // Version
   // ---------------
   function version() {
-    return api<GitlabResponse['Version']>('get', pathnames.version());
+    return api<GitlabResponse['Version']>('get', pathname.version());
   }
 
   // Project
   // ---------------
   function project(pid: GitlabProjectID) {
-    return api<GitlabResponse['Project']>('get', pathnames.project(pid));
+    return api<GitlabResponse['Project']>('get', pathname.project(pid));
   }
 
   project.createMergeRequest = (options: {
@@ -86,7 +86,7 @@ export const createGitlabService = (config: GitlabApiConfig) => {
   }) =>
     api<GitlabResponse['MergeRequest']>(
       'post',
-      pathnames.mergeRequests(options.id),
+      pathname.mergeRequests(options.id),
       { body: options }
     );
 
@@ -96,12 +96,12 @@ export const createGitlabService = (config: GitlabApiConfig) => {
       state: 'opened',
     }
   ) =>
-    api<GitlabResponse['MergeRequest'][]>('get', pathnames.mergeRequests(pid), {
+    api<GitlabResponse['MergeRequest'][]>('get', pathname.mergeRequests(pid), {
       query: options,
     });
 
   project.listBranches = (pid: GitlabProjectID) =>
-    api<GitlabResponse['Branch'][]>('get', pathnames.branches(pid));
+    api<GitlabResponse['Branch'][]>('get', pathname.branches(pid));
 
   return {
     version,

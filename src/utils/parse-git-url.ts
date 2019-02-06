@@ -17,6 +17,3 @@ export const parseGitUrl = (remoteUrl: string) => {
     project,
   };
 };
-
-export const formatProjectId = (val: number | string) =>
-  typeof val === 'number' ? val : encodeURIComponent(val);

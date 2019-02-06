@@ -1,5 +1,7 @@
-import { formatProjectId } from './utils';
 import { GitlabProjectID } from './types';
+
+export const formatProjectId = (val: number | string) =>
+  typeof val === 'number' ? val : encodeURIComponent(val);
 
 // API Base
 // ---------------

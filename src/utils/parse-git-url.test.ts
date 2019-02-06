@@ -1,4 +1,4 @@
-import { parseGitUrl, formatProjectId } from '../utils';
+import { parseGitUrl } from './parse-git-url';
 
 test('parse git url', () => {
   expect(parseGitUrl('git@git.example.com:project.name/gitlab-repo.git'))
@@ -10,11 +10,4 @@ Object {
   "project_with_namespace": "project.name/gitlab-repo",
 }
 `);
-});
-
-test('format project id', () => {
-  expect(formatProjectId('project.name/gitlab-repo')).toMatchInlineSnapshot(
-    `"project.name%2Fgitlab-repo"`
-  );
-  expect(formatProjectId(1235)).toMatchInlineSnapshot(`1235`);
 });
