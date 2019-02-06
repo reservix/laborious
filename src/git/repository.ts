@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import execa from 'execa';
 import findUp from 'find-up';
+import gitUrl from 'git-url-parse';
 import { dirname } from 'path';
 import { EOL } from 'os';
+import { URL } from 'url';
 import { log, prompt } from '..';
 
 /**
@@ -184,4 +187,20 @@ export const getRefByUpstream = async (
   } catch {
     return null;
   }
+};
+
+export const parseRemoteUrl = (remoteUrl: string) => {
+  const normalized = gitUrl(remoteUrl)
+    .toString('https')
+    .replace(/\.git$/, '');
+  const url = new URL(normalized);
+  const project_with_namespace = url.pathname.replace(/^\//, '');
+  const [namespace, project] = project_with_namespace.split('/');
+
+  return {
+    origin: url.origin,
+    project_with_namespace,
+    namespace,
+    project,
+  };
 };

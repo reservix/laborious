@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import {
   createGitlabService,
-  parseGitUrl,
+  parseRemoteUrl,
   ensureRemoteUrl,
   ensureGitlabToken,
 } from '..';
@@ -23,7 +23,7 @@ export const getGitlabTokenPath = async (cwd: string) => {
 
 export const ensureGitlabConfig = async (cwd: string) => {
   const remote = await ensureRemoteUrl(cwd);
-  const url = parseGitUrl(remote);
+  const url = parseRemoteUrl(remote);
 
   const path = await getGitlabTokenPath(cwd);
   const token = await ensureGitlabToken(path, url.origin);

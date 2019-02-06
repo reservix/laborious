@@ -5,6 +5,7 @@ import {
   getRefByUpstream,
   isRepositoryClean,
   isGitUrl,
+  parseRemoteUrl,
 } from './repository';
 
 const execa = (originalExeca as any) as jest.Mock;
@@ -133,4 +134,16 @@ test('is valid git url', () => {
   invalidURLs.forEach(url => {
     expect(isGitUrl(url)).toBeFalsy();
   });
+});
+
+test('parse git url', () => {
+  expect(parseRemoteUrl('git@git.example.com:project.name/gitlab-repo.git'))
+    .toMatchInlineSnapshot(`
+Object {
+  "namespace": "project.name",
+  "origin": "https://git.example.com",
+  "project": "gitlab-repo",
+  "project_with_namespace": "project.name/gitlab-repo",
+}
+`);
 });
