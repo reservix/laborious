@@ -2,8 +2,7 @@ import got, { GotJSONOptions, GotError } from 'got';
 import { URL } from 'url';
 
 import * as pathnames from './pathnames';
-import { GitlabResponse } from './responses';
-import { GitlabProjectID } from './types';
+import { GitlabResponse, GitlabProjectID } from './types';
 
 export type GitlabApiConfig = {
   baseUrl: string;
