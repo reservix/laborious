@@ -5,11 +5,11 @@ import { createGitlabToken } from './token';
 import { outputFile } from 'fs-extra';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { __setAnswers } = require('../utils/prompt');
+const { __setAnswers } = require('../utils');
 jest.mock('opn');
 jest.mock('fs-extra');
-jest.mock('../utils/log');
-jest.mock('../utils/prompt');
+jest.mock('../utils');
+jest.mock('../utils');
 
 beforeEach(() => {
   __setAnswers({

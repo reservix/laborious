@@ -1,3 +1,5 @@
+import { createMockProxy } from 'jest-mock-proxy';
+
 let mockedAnswers: { [name: string]: any } = {};
 export const __setAnswers = (answers: { [name: string]: any }) => {
   mockedAnswers = answers;
@@ -24,3 +26,5 @@ export const prompt = jest
       }, {})
     );
   });
+
+export const log = createMockProxy<any>();

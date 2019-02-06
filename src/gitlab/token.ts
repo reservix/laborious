@@ -2,7 +2,7 @@ import { outputFile, readFile } from 'fs-extra';
 import opn from 'opn';
 import { URL } from 'url';
 
-import { log, prompt } from '..';
+import { log, prompt } from '../utils';
 
 export const createGitlabToken = async (
   filePath: string,
