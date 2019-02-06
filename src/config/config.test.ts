@@ -1,5 +1,4 @@
-import { defaultConfig } from '../default-config';
-import { validateLaboriousConfig } from '../validate-config';
+import { defaultConfig, validateLaboriousConfig } from './config';
 
 test('merges with defaults', async () => {
   expect(await validateLaboriousConfig({})).toMatchInlineSnapshot(`

@@ -1,14 +1,12 @@
 import { resolve } from 'path';
 import {
   createGitlabService,
-  parseRemoteUrl,
-  ensureRemoteUrl,
   ensureGitlabToken,
-} from '..';
-import {
+  ensureRemoteUrl,
+  getLaboriousConfig,
+  parseRemoteUrl,
   LABORIOUS_GITLAB_TOKEN_PATH,
   LABORIOUS_NAMESPACE,
-  getLaboriousConfig,
 } from '.';
 
 export const getGitlabTokenPath = async (cwd: string) => {
