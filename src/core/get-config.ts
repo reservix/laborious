@@ -51,7 +51,7 @@ export const ensureLaboriousConfig = async (cwd: string) => {
     type: 'confirm',
     name: 'init',
     message: `You task requires a laborious configuration. Create one?`,
-    initial: true,
+    default: true,
   });
 
   if (!init) {

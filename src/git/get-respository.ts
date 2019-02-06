@@ -18,7 +18,7 @@ export const ensureRepository = async (cwd: string) => {
     type: 'confirm',
     name: 'init',
     message: `Do you want to initialize a git repository in "${cwd}"?`,
-    initial: true,
+    default: true,
   });
 
   if (!initGit) {

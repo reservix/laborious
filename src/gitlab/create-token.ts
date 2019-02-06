@@ -16,7 +16,7 @@ export const createGitlabToken = async (
       type: 'confirm',
       name: 'openUrl',
       message: `Open Gitlab's profile page?`,
-      initial: true,
+      default: true,
     });
 
     if (openUrl) {

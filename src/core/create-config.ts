@@ -25,19 +25,19 @@ export const createConfig = async (
       type: 'input',
       name: 'default_branch',
       message: 'Name of the default target branch for MRs:',
-      initial: defaultConfig.mr.default_branch,
+      default: defaultConfig.mr.default_branch,
     },
     {
       type: 'confirm',
       name: 'squash',
       message: 'Should MRs be squashed?',
-      initial: true,
+      default: true,
     },
     {
       type: 'confirm',
       name: 'remove_source_branch',
       message: 'Remove source branch after merge?',
-      initial: true,
+      default: true,
     },
   ]);
 

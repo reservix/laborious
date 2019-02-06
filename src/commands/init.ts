@@ -19,7 +19,7 @@ export const handler = async (argv: Arguments<{ cwd: string }>) => {
       message:
         `Found a configuration file (${config._.file}).\n` +
         `Are you sure you want to create a new one?`,
-      initial: false,
+      default: false,
     });
 
     if (!override) {

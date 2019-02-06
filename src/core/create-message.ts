@@ -11,11 +11,11 @@ export const createMessage = async (
     description: string;
   }>([
     {
-      type: 'select',
+      type: 'list',
       name: 'type',
       message: 'MR Type:',
       choices: Object.entries(config.types).map(([name, emoji]) => ({
-        message: `${emoji}  ${name}`,
+        name: `${emoji}  ${name}`,
         value: emoji,
       })),
     },

@@ -5,7 +5,7 @@ export const __setAnswers = (answers: { [name: string]: any }) => {
 
 type Questions = {
   name: string;
-  initial?: any;
+  default?: any;
 };
 
 export const prompt = jest
@@ -13,13 +13,13 @@ export const prompt = jest
   .mockImplementation((questions: Questions | Questions[]) => {
     const input = Array.isArray(questions) ? questions : [questions];
     return Promise.resolve(
-      input.reduce((answers, { name, initial }) => {
+      input.reduce((answers, { name, default: def }) => {
         answers[name] =
           name in mockedAnswers
             ? mockedAnswers[name]
-            : typeof initial === 'undefined'
+            : typeof def === 'undefined'
             ? null
-            : initial;
+            : def;
         return answers;
       }, {})
     );

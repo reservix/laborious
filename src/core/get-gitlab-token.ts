@@ -26,7 +26,7 @@ export const ensureGitlabToken = async (
     type: 'confirm',
     name: 'init',
     message: `A Gitlab token is required. Create one?`,
-    initial: true,
+    default: true,
   });
 
   if (!init) {

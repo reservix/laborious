@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import { ChoiceType } from 'inquirer';
 import { Arguments, CommandBuilder } from 'yargs';
 
 import {
@@ -11,7 +12,11 @@ import {
   fastForward,
 } from '..';
 
-const EMPTY_CHOICE = { message: 'None found.', value: null, disabled: '' };
+const EMPTY_CHOICE: ChoiceType = {
+  name: 'None found.',
+  value: null,
+  disabled: '',
+};
 type Choice = {
   name: string;
   branch: string;
@@ -50,9 +55,9 @@ export const handler = async (argv: Arguments<{ cwd: string }>) => {
 
   const mrChoices = mrs.length
     ? [
-        { role: 'heading', value: chalk.bold('\nMerge Request') },
-        ...mrs.map<{ message: string; value: Choice }>(mr => ({
-          message: `${mr.title} ${chalk.dim(`(#${mr.iid})`)}`,
+        prompt.headline('\nMerge Request'),
+        ...mrs.map<ChoiceType>(mr => ({
+          name: `${mr.title} ${chalk.dim(`(#${mr.iid})`)}`,
           value: {
             name: mr.title,
             branch: mr.source_branch,
@@ -64,7 +69,7 @@ export const handler = async (argv: Arguments<{ cwd: string }>) => {
 
   const branchChoices = branches.length
     ? [
-        { role: 'heading', value: chalk.bold('\nBranches') },
+        prompt.headline('\nBranch'),
         ...branches
           .sort(a => {
             if (a.default) {
@@ -73,8 +78,8 @@ export const handler = async (argv: Arguments<{ cwd: string }>) => {
 
             return 1;
           })
-          .map<{ message: string; value: Choice }>(b => ({
-            message: `🌱  ${b.name}${
+          .map<ChoiceType>(b => ({
+            name: `🌱  ${b.name}${
               b.default ? `${chalk.dim(' (default)')}` : ''
             }`,
             value: { name: b.name, branch: b.name, type: 'Branch' },
@@ -83,7 +88,7 @@ export const handler = async (argv: Arguments<{ cwd: string }>) => {
     : [EMPTY_CHOICE];
 
   const { selected } = await prompt<{ selected: Choice }>({
-    type: 'select',
+    type: 'list',
     name: 'selected',
     message: 'Choose a merge request or branch:',
     choices: [...mrChoices, ...branchChoices],
