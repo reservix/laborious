@@ -1,5 +1,7 @@
+export type LaboriousMessageTypes = { [name: string]: string };
+
 export type LaboriousMergeRequestConfig = {
-  types: { [name: string]: string };
+  types: LaboriousMessageTypes;
   squash: boolean;
   default_branch: string;
   remove_source_branch: boolean;
