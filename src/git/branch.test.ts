@@ -14,8 +14,8 @@ test('breanch exists', async () => {
     return branch === 'master' ? Promise.resolve() : Promise.reject();
   });
 
-  expect(branchExists('master')).resolves.toBeTruthy();
-  expect(branchExists('foo')).resolves.toBeFalsy();
+  expect(branchExists('master', 'cwd')).resolves.toBeTruthy();
+  expect(branchExists('foo', 'cwd')).resolves.toBeFalsy();
 });
 
 test('checkout a remote branch', async () => {

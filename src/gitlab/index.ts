@@ -1,3 +1,4 @@
+export * from './format';
 export * from './pathname';
 export * from './service';
 export * from './token';
