@@ -24,7 +24,7 @@ log.error = logWith(logSymbols.error);
 log.indent = (msg: string, indent?: string) =>
   console.log(
     indentString(msg, typeof indent === 'string' ? 1 : 0, {
-      indent,
+      indent: indent || ' ',
       includeEmptyLines: true,
     })
   );
