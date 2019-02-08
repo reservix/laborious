@@ -1,3 +1,30 @@
+# [0.6.0](https://github.com/reservix/laborious/compare/v0.5.0...v0.6.0) (2019-02-08)
+
+### Refactoring & Improvements
+
+- Add spinner when git is checked and updated. ([70f570c](https://github.com/reservix/laborious/commit/70f570c))
+- Move "parseRemoteUrl" util into repository file ([3abda46](https://github.com/reservix/laborious/commit/3abda46))
+- Move all utils to one file ([0b1fd0c](https://github.com/reservix/laborious/commit/0b1fd0c))
+- Move GitlabReponse types to types file ([0d3a022](https://github.com/reservix/laborious/commit/0d3a022))
+- Move to inquirer ([855e62c](https://github.com/reservix/laborious/commit/855e62c))
+- Restrcture "gitlab" domain ([908651c](https://github.com/reservix/laborious/commit/908651c))
+- Restructure "core" domain ([56d0121](https://github.com/reservix/laborious/commit/56d0121))
+- Restructure "git" domain ([84d6d07](https://github.com/reservix/laborious/commit/84d6d07))
+- Extract MR message to own file + add spinner (#8) ([513d34e](https://github.com/reservix/laborious/commit/513d34e)), closes [#8](https://github.com/reservix/laborious/issues/8)
+
+### Bug Fixes
+
+- Move "jest-mock-proxy" to dev depdencies ([f8e83d0](https://github.com/reservix/laborious/commit/f8e83d0))
+
+### Tooling
+
+- Update prettier and conventional-changelog ([4bf2644](https://github.com/reservix/laborious/commit/4bf2644))
+
+### Miscellaneous
+
+- Docs docs docs ([9ce7fe5](https://github.com/reservix/laborious/commit/9ce7fe5))
+- Wip: draft MR with review + change target branch ([299421f](https://github.com/reservix/laborious/commit/299421f))
+
 # [0.5.0](https://github.com/reservix/laborious/compare/v0.4.3...v0.5.0) (2019-02-05)
 
 ### Features
