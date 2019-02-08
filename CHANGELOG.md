@@ -1,5 +1,9 @@
 # [0.6.0](https://github.com/reservix/laborious/compare/v0.5.0...v0.6.0) (2019-02-08)
 
+### Features
+
+- Review MR before creating + option to change MR target (#9) ([996565c](https://github.com/reservix/laborious/commit/996565c)), closes [#9](https://github.com/reservix/laborious/issues/9) [#6](https://github.com/reservix/laborious/issues/6)
+
 ### Refactoring & Improvements
 
 - Add spinner when git is checked and updated. ([70f570c](https://github.com/reservix/laborious/commit/70f570c))
