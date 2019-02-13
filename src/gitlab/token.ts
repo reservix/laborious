@@ -51,7 +51,13 @@ export const getGitlabToken = async (filePath: string) => {
     return process.env.GITLAB_TOKEN;
   }
 
-  const token = await readFile(filePath, 'utf8');
+  let token: string | null = null;
+  try {
+    token = await readFile(filePath, 'utf8');
+  } catch {
+    log.warning(`Could not find a token at location '${filePath}'.`);
+  }
+
   return token;
 };
 
