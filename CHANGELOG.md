@@ -1,4 +1,4 @@
-# [0.6.0](https://github.com/reservix/laborious/compare/v0.5.0...v0.6.0) (2019-02-08)
+## [0.6.1](https://github.com/reservix/laborious/compare/v0.5.0...v0.6.1) (2019-02-13)
 
 ### Features
 
@@ -19,10 +19,15 @@
 ### Bug Fixes
 
 - Move "jest-mock-proxy" to dev depdencies ([f8e83d0](https://github.com/reservix/laborious/commit/f8e83d0))
+- Catch when token file can not be found (#10) ([63b6622](https://github.com/reservix/laborious/commit/63b6622)), closes [#10](https://github.com/reservix/laborious/issues/10)
 
 ### Tooling
 
 - Update prettier and conventional-changelog ([4bf2644](https://github.com/reservix/laborious/commit/4bf2644))
+
+### Documentation
+
+- Fix changelog ([0fe3602](https://github.com/reservix/laborious/commit/0fe3602))
 
 # [0.5.0](https://github.com/reservix/laborious/compare/v0.4.3...v0.5.0) (2019-02-05)
 
