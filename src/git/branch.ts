@@ -1,5 +1,34 @@
 import execa from 'execa';
-import { ensureRepository, getRefByUpstream } from './repository';
+import { EOL } from 'os';
+import { ensureRepository } from './repository';
+
+const FORMAT_SEPARATOR = '##__##';
+
+/**
+ * Get a list of local branches and their remote tracking branches.
+ *
+ * @param cwd current working directory
+ * @returns list of branches (`name`) and their remote tracking branch (`tracking`)
+ */
+export const getBranchList = async (cwd: string) => {
+  const { stdout } = await execa(
+    'git',
+    [
+      'branches',
+      '-vv',
+      `--format=%(refname:short)${FORMAT_SEPARATOR}%(upstream:short)`,
+    ],
+    { cwd }
+  );
+
+  return stdout.split(EOL).map(line => {
+    const [name, tracking] = line.split(FORMAT_SEPARATOR);
+    return {
+      name: name.trim(),
+      tracking: tracking.trim() || null,
+    };
+  });
+};
 
 /**
  * Get current repository branch name.
@@ -51,8 +80,10 @@ export const branchExists = async (branch: string, cwd: string) => {
  * @returns resolves when branch is successfully checked out
  */
 export const checkoutRemoteBranch = async (branch: string, cwd: string) => {
-  const localBranch = await getRefByUpstream(branch, cwd);
-  const args = localBranch ? [localBranch] : ['--track', branch];
+  const branches = await getBranchList(cwd);
+  const localBranch = branches.find(({ tracking }) => tracking === branch);
+
+  const args = localBranch ? [localBranch.name] : ['--track', branch];
   await execa('git', ['checkout', ...args], { cwd });
 };
 
