@@ -1,3 +1,9 @@
+## [0.6.4](https://github.com/reservix/laborious/compare/v0.6.3...v0.6.4) (2019-02-14)
+
+### Tooling
+
+- Add prepublish script ([11f3004](https://github.com/reservix/laborious/commit/11f3004))
+
 ## [0.6.3](https://github.com/reservix/laborious/compare/v0.6.2...v0.6.3) (2019-02-14)
 
 ### Bug Fixes
