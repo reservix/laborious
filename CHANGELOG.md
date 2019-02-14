@@ -1,3 +1,9 @@
+## [0.6.2](https://github.com/reservix/laborious/compare/v0.6.1...v0.6.2) (2019-02-14)
+
+### Refactoring & Improvements
+
+- Improve checking out remote branch (#11) ([7c8f789](https://github.com/reservix/laborious/commit/7c8f789)), closes [#11](https://github.com/reservix/laborious/issues/11)
+
 ## [0.6.1](https://github.com/reservix/laborious/compare/v0.5.0...v0.6.1) (2019-02-13)
 
 ### Features
