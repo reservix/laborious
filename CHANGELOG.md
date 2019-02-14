@@ -1,3 +1,9 @@
+## [0.6.3](https://github.com/reservix/laborious/compare/v0.6.2...v0.6.3) (2019-02-14)
+
+### Bug Fixes
+
+- Correctly get command directory (#12) ([e9c9786](https://github.com/reservix/laborious/commit/e9c9786)), closes [#12](https://github.com/reservix/laborious/issues/12)
+
 ## [0.6.2](https://github.com/reservix/laborious/compare/v0.6.1...v0.6.2) (2019-02-14)
 
 ### Refactoring & Improvements
