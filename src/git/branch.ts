@@ -2,7 +2,7 @@ import execa from 'execa';
 import { EOL } from 'os';
 import { ensureRepository } from './repository';
 
-const FORMAT_SEPARATOR = '##__##';
+export const FORMAT_SEPARATOR = '##__##';
 
 /**
  * Get a list of local branches and their remote tracking branches.

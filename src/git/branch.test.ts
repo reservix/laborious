@@ -1,5 +1,11 @@
 import originalExeca from 'execa';
-import { branchExists, checkoutRemoteBranch, getCurrentBranch } from './branch';
+import {
+  branchExists,
+  checkoutRemoteBranch,
+  getCurrentBranch,
+  FORMAT_SEPARATOR,
+  getBranchList,
+} from './branch';
 
 const execa = (originalExeca as any) as jest.Mock;
 jest.mock('execa');
@@ -18,36 +24,61 @@ test('breanch exists', async () => {
   expect(branchExists('foo', 'cwd')).resolves.toBeFalsy();
 });
 
-test('checkout a remote branch', async () => {
-  await checkoutRemoteBranch('master', 'cwd');
-  expect(((originalExeca as any) as jest.Mock).mock.calls)
-    .toMatchInlineSnapshot(`
+test('get list of branches', async () => {
+  execa.mockResolvedValue({
+    stdout:
+      `master${FORMAT_SEPARATOR}origin/master\n` +
+      `feature-branch${FORMAT_SEPARATOR}origin/feature-branch`,
+  });
+  await expect(getBranchList('cwd')).resolves.toMatchInlineSnapshot(`
 Array [
+  Object {
+    "name": "master",
+    "tracking": "origin/master",
+  },
+  Object {
+    "name": "feature-branch",
+    "tracking": "origin/feature-branch",
+  },
+]
+`);
+});
+
+test('checkout a remote branch', async () => {
+  execa.mockResolvedValue({
+    stdout: `master${FORMAT_SEPARATOR}origin/master`,
+  });
+  await checkoutRemoteBranch('origin/new-branch', 'cwd');
+  expect(execa.mock.calls.pop()).toMatchInlineSnapshot(`
+Array [
+  "git",
   Array [
-    "git",
-    Array [
-      "for-each-ref",
-      "--format",
-      "%(refname:short)||%(upstream:short)",
-      "--points-at",
-      "master",
-      "refs/heads",
-    ],
-    Object {
-      "cwd": "cwd",
-    },
+    "checkout",
+    "--track",
+    "origin/new-branch",
   ],
+  Object {
+    "cwd": "cwd",
+  },
+]
+`);
+});
+
+test('switch to a remote branch', async () => {
+  execa.mockResolvedValue({
+    stdout: `master${FORMAT_SEPARATOR}origin/master`,
+  });
+  await checkoutRemoteBranch('origin/master', 'cwd');
+  expect(execa.mock.calls.pop()).toMatchInlineSnapshot(`
+Array [
+  "git",
   Array [
-    "git",
-    Array [
-      "checkout",
-      "--track",
-      "master",
-    ],
-    Object {
-      "cwd": "cwd",
-    },
+    "checkout",
+    "master",
   ],
+  Object {
+    "cwd": "cwd",
+  },
 ]
 `);
 });
