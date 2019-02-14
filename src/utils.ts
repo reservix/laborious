@@ -48,4 +48,4 @@ prompt.headline = (val: string) =>
  *
  * @returns path to command directory
  */
-export const getCommandsDir = () => resolve(__dirname, '..', './commands');
+export const getCommandsDir = () => resolve(__dirname, './commands');
