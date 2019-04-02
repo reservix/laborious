@@ -16,5 +16,5 @@
     "outDir": "lib"
   },
   "include": ["src/**/*"],
-  "exclude": ["bin", "lib", "node_modules", "jest.setup.ts"]
+  "exclude": ["node_modules", "bin", "lib", "**/__mocks__", "**/jest.setup.ts"]
 }
