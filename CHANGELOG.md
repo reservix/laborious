@@ -1,8 +1,14 @@
-## [0.6.4](https://github.com/reservix/laborious/compare/v0.6.3...v0.6.4) (2019-02-14)
+## [0.6.5](https://github.com/reservix/laborious/compare/v0.6.3...v0.6.5) (2019-04-02)
+
+### Bug Fixes
+
+- Fix mr command when no token is available (#14) ([7c2cdf0](https://github.com/reservix/laborious/commit/7c2cdf0)), closes [#14](https://github.com/reservix/laborious/issues/14)
 
 ### Tooling
 
-- Add prepublish script ([11f3004](https://github.com/reservix/laborious/commit/11f3004))
+- Add prepublish script ([a867fd8](https://github.com/reservix/laborious/commit/a867fd8))
+- Optimize build (#13) ([d84c8ae](https://github.com/reservix/laborious/commit/d84c8ae)), closes [#13](https://github.com/reservix/laborious/issues/13)
+- Switch to CircleCI (#15) ([72dcb3a](https://github.com/reservix/laborious/commit/72dcb3a)), closes [#15](https://github.com/reservix/laborious/issues/15)
 
 ## [0.6.3](https://github.com/reservix/laborious/compare/v0.6.2...v0.6.3) (2019-02-14)
 
