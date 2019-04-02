@@ -117,12 +117,11 @@ export const builder: CommandBuilder<any, any> = yargs =>
 export const handler = async (argv: Arguments<{ cwd: string }>) => {
   const { cwd } = argv;
 
-  let spinner = ora('Checking git and fetching updates...').start();
-
   const { gitlab, url } = await ensureGitlabService(cwd);
   const branch = await ensureCurrentBranch(cwd);
   const { mr: config } = await ensureLaboriousConfig(cwd);
 
+  let spinner = ora('Checking git and fetching updates...').start();
   const clean = await ensureGitClean(cwd);
   if (!clean) {
     spinner.stop();
