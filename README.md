@@ -1,9 +1,3 @@
-<div align="center">
-  <a href="https://www.emojione.com/emoji/2697">
-    <img height="120" width="120" alt="alembic" src="https://raw.githubusercontent.com/reservix/laborious/master/assets/alembic.png" />
-  </a>
-</div>
-
 # laborious
 
 [![buid][ci-badge]][ci] [![version][version-badge]][package] [![MIT License][license-badge]][license]
